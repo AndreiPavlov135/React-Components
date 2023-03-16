@@ -1,0 +1,46 @@
+.text-field__group {
+  display: flex;
+}
+
+.text-field__label {
+  font-size: 2em;
+}
+
+.text-field__btn {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  cursor: pointer;
+  background-color: #eee;
+  border: 1px solid #bdbdbd;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: 0.15s;
+  outline: none;
+}
+
+.text-field__btn:active,
+.text-field__btn:focus {
+  outline: none;
+}
+.text-field__btn:hover {
+  background-color: #bdbdbd;
+}
+.text-field__group .text-field__input {
+  border: 1px solid #bdbdbd;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+  outline: none;
+}
+
+.text-field__group .text-field__btn {
+  position: relative;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-width: 0;
+  border: 0;
+}
