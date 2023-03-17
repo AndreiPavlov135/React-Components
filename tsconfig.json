@@ -15,7 +15,7 @@
     "baseUrl": "./src",
     "resolveJsonModule": true,
     "paths": {
-      "@components/*": ["src/components/*"]
+      "@components/*": ["./src/components/*"]
     }
   },
   "include": ["./src/**/*", "styled.d.ts"]
