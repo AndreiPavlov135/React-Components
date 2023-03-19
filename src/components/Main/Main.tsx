@@ -2,6 +2,7 @@ import React from 'react';
 import './Main.css';
 import SearchBar from '../Utils/SearchBar';
 import Header from '../Header/Header';
+import Cards from '../Utils/Cards';
 
 export default class Main extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class Main extends React.Component {
       <>
         <Header />
         <SearchBar />
+        <Cards />
       </>
     );
   }
