@@ -25,13 +25,13 @@ export default class SearchBar extends React.Component {
             type="search"
             id="search"
             name="search"
+            defaultValue={localStorage.value}
             onChange={(e) => this.getInputValue(e)}
           />
           <button className="search-field__btn" type="button">
             Search
           </button>
         </form>
-        <span className="search-field__result">Input value: {localStorage.value}</span>
       </div>
     );
   }
