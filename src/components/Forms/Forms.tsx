@@ -14,7 +14,7 @@ export default class Forms extends React.Component {
   inputImg: React.RefObject<HTMLInputElement>;
   constructor(props: { [key: string]: string }) {
     super(props);
-    this.state = { value: '' };
+    this.state = { form: { message: '' } };
     this.inputTitle = React.createRef();
     this.inputDate = React.createRef();
     this.inputSelect = React.createRef();
@@ -70,14 +70,14 @@ export default class Forms extends React.Component {
         <form className="form" onSubmit={this.handleSubmit}>
           <label>
             TITLE:
-            <input type="text" ref={this.inputTitle} />
+            <input type="text" maxLength={30} ref={this.inputTitle} />
           </label>
           <label>
-            DATE
+            DATE:
             <input type="date" defaultValue="2023-03-27" ref={this.inputDate}></input>
           </label>
           <label>
-            SKILL
+            SKILL:
             <select ref={this.inputSelect}>
               <option value="react">React</option>
               <option value="angular">Angular</option>
@@ -110,9 +110,9 @@ export default class Forms extends React.Component {
           </label>
           <label>
             FILE:
-            <input type="file" />
+            <input type="file" className="btn" />
           </label>
-          <input type="submit" value="send" />
+          <input type="submit" className="btn" value="send" />
         </form>
       </>
     );
