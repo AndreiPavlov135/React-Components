@@ -25,30 +25,28 @@ export default class Forms extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // uploadImage(file: Blob) {
-  //   const reader = new FileReader();
-  //   reader.addEventListener('load', function () {
-  //     if (this.result && localStorage) {
-  //       localStorage.setItem(file.name, this.result.toString());
-  //     } else {
-  //       alert();
-  //     }
-  //   });
-  //   reader.readAsDataURL(file);
-  // }
+  loadImage(file: File) {
+    const reader = new FileReader();
+    reader.addEventListener('load', function () {
+      if (this.result && localStorage) {
+        localStorage.setItem(file.name, this.result.toString());
+      }
+    });
+    reader.readAsDataURL(file);
+  }
 
   handleSubmit(event: FormEvent) {
     const cardsInfo: Array<ISearchItem> = localStorage.dataList
       ? JSON.parse(localStorage.dataList)
       : data;
 
-    // const files: FileList | null | undefined = this.inputImg.current?.files;
-    // const fileListAsArray = files ? Array.from([...files]) : [];
-    // const objectImg: Blob = fileListAsArray[0];
-    // this.uploadImage(objectImg);
+    const files: FileList | null | undefined = this.inputImg.current?.files;
+    const fileListArr = files ? Array.from([...files]) : [];
+    const objectImg: File = fileListArr[0];
+    this.loadImage(objectImg);
     cardsInfo.push({
       title: this.inputTitle.current?.value,
-      url: '',
+      url: objectImg.name,
       date: this.inputDate.current?.value,
       select: this.inputSelect.current?.value,
       statistics: {
@@ -61,6 +59,7 @@ export default class Forms extends React.Component {
       },
     });
     alert('Card in Main page');
+    localStorage.dataList = JSON.stringify(cardsInfo);
     event.preventDefault();
   }
   render() {
@@ -70,7 +69,7 @@ export default class Forms extends React.Component {
         <form className="form" onSubmit={this.handleSubmit}>
           <label>
             TITLE:
-            <input type="text" maxLength={30} ref={this.inputTitle} />
+            <input type="text" required maxLength={30} ref={this.inputTitle} />
           </label>
           <label>
             DATE:
@@ -87,7 +86,7 @@ export default class Forms extends React.Component {
           </label>
           <label>
             LIKE:
-            <input type="checkbox" ref={this.inputCheckBox} value="1" />
+            <input type="checkbox" ref={this.inputCheckBox} required value="1" />
           </label>
           <label>
             DISLIKE:
@@ -97,6 +96,7 @@ export default class Forms extends React.Component {
               value="10"
               type="radio"
               ref={this.inputRadio10}
+              defaultChecked
             />
             10
             <input
@@ -110,7 +110,7 @@ export default class Forms extends React.Component {
           </label>
           <label>
             FILE:
-            <input type="file" className="btn" />
+            <input type="file" required className="btn" ref={this.inputImg} />
           </label>
           <input type="submit" className="btn" value="send" />
         </form>

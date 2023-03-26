@@ -5,7 +5,9 @@ import { ISearchItem } from '../Data/ISearchItem';
 
 export default class Cards extends React.Component {
   render() {
-    const dataList: ISearchItem[] = localStorage.dataList ? JSON.parse(localStorage.cards) : data;
+    const dataList: ISearchItem[] = localStorage.dataList
+      ? JSON.parse(localStorage.dataList)
+      : data;
     return (
       <div className="items">
         {dataList.map((item, index): ReactNode => {
@@ -19,8 +21,8 @@ export default class Cards extends React.Component {
                 <span>{item.statistics.commentCount}</span>
               </div>
               <div className="items__title">{item.title}</div>
-              <div>{item.date}</div>
-              <div>{item.select}</div>
+              <div className="items__title">{item.date}</div>
+              <div className="items__title">{item.select}</div>
               <button className="items__btn">more...</button>
             </div>
           );

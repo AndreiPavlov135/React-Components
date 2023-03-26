@@ -9,6 +9,11 @@
   background: #e5e5e5;
 }
 
+.items__card > img {
+  width: 260px;
+  height: 146px;
+}
+
 .items__icons * {
   margin: 0 3px;
   font-weight: 600;
