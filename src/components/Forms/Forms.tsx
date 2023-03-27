@@ -5,6 +5,7 @@ import { data } from '../Data/Response';
 import './Forms.css';
 
 export default class Forms extends React.Component {
+  formRef: React.RefObject<HTMLFormElement>;
   inputTitle: React.RefObject<HTMLInputElement>;
   inputDate: React.RefObject<HTMLInputElement>;
   inputSelect: React.RefObject<HTMLSelectElement>;
@@ -15,6 +16,7 @@ export default class Forms extends React.Component {
   constructor(props: { [key: string]: string }) {
     super(props);
     this.state = { form: { message: '' } };
+    this.formRef = React.createRef();
     this.inputTitle = React.createRef();
     this.inputDate = React.createRef();
     this.inputSelect = React.createRef();
@@ -61,12 +63,13 @@ export default class Forms extends React.Component {
     alert('Card in Main page');
     localStorage.dataList = JSON.stringify(cardsInfo);
     event.preventDefault();
+    this.formRef.current?.reset();
   }
   render() {
     return (
       <>
         <Header />
-        <form className="form" onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit} ref={this.formRef}>
           <label>
             TITLE:
             <input type="text" required maxLength={30} ref={this.inputTitle} />
