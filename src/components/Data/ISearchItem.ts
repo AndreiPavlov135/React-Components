@@ -5,3 +5,12 @@ export interface ISearchItem {
   select?: string;
   statistics: { [key: string]: string };
 }
+
+export type FormFields = {
+  title: string;
+  inputImg: FileList;
+  date: string;
+  select: string;
+  statistics: { [key: string]: string };
+  inputCheckBox: string;
+};

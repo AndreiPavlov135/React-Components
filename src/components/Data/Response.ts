@@ -1,4 +1,4 @@
-export const data = [
+export const dataCard = [
   {
     url: 'https://i.ytimg.com/vi/YN8zNnV0sK8/mqdefault.jpg',
     title: 'Angular 8 - Быстрый курс за 60 минут',

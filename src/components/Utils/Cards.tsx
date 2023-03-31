@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import './Utils-styles/Cards.css';
-import { data } from '../Data/Response';
+import { dataCard } from '../Data/Response';
 import { ISearchItem } from '../Data/ISearchItem';
 
 export default class Cards extends React.Component {
   render() {
     const dataList: ISearchItem[] = localStorage.dataList
       ? JSON.parse(localStorage.dataList)
-      : data;
+      : dataCard;
     return (
       <div className="items">
         {dataList.map((item, index): ReactNode => {
