@@ -18,5 +18,5 @@
       "@components/*": ["./src/components/*"]
     }
   },
-  "include": ["./src/**/*", "styled.d.ts"]
+  "include": ["./src/**/*", "styled.d.ts", "./setupTest.ts"]
 }
