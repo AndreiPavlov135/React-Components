@@ -1,38 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Utils-styles/Search-bar.css';
 
-export default class SearchBar extends React.Component {
-  inputValue = '';
+export default function SearchBar() {
+  const [inputValue, setInputValue] = useState('');
 
-  getInputValue(e: React.ChangeEvent<HTMLInputElement>) {
+  function getInputValue(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
-    this.inputValue = e.target.value;
+    setInputValue(e.target.value);
   }
 
-  componentWillUnmount() {
-    localStorage.value = this.inputValue;
-  }
+  useEffect(() => {
+    return () => {
+      localStorage.value = inputValue;
+    };
+  });
 
-  render() {
-    return (
-      <div className="search-field">
-        <label className="search-field__label" htmlFor="search">
+  return (
+    <div className="search-field">
+      <label className="search-field__label" htmlFor="search">
+        Search
+      </label>
+      <form className="search-field__group">
+        <input
+          className="search-field__input"
+          type="search"
+          id="search"
+          name="search"
+          defaultValue={localStorage.value}
+          onChange={(e) => getInputValue(e)}
+        />
+        <button className="search-field__btn" type="button">
           Search
-        </label>
-        <form className="search-field__group">
-          <input
-            className="search-field__input"
-            type="search"
-            id="search"
-            name="search"
-            defaultValue={localStorage.value}
-            onChange={(e) => this.getInputValue(e)}
-          />
-          <button className="search-field__btn" type="button">
-            Search
-          </button>
-        </form>
-      </div>
-    );
-  }
+        </button>
+      </form>
+    </div>
+  );
 }
