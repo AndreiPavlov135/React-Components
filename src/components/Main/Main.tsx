@@ -2,14 +2,14 @@ import React from 'react';
 import './Main.css';
 import SearchBar from '../Utils/SearchBar';
 import Header from '../Header/Header';
-import Cards from '../Utils/Cards';
+import RickAndMorty from '../Utils/RickAndMorty';
 
 export default function Main() {
   return (
     <>
       <Header />
       <SearchBar />
-      <Cards />
+      <RickAndMorty />
     </>
   );
 }
