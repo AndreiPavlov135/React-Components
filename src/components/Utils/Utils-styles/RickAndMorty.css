@@ -1,0 +1,13 @@
+.cards-field {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1%;
+  border-radius: 5px;
+}
+
+.card-img {
+  width: 100px;
+  cursor: pointer;
+  border-radius: 20px;
+}

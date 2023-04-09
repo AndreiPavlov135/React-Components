@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RickAndMortyItem, RickAndMortyRes } from './Types/RickAndMorty';
 import RickAndMortyPopUp from './RickAndMortyPopUp';
+import './Utils-styles/RickAndMorty.css';
 
 export default function RickAndMorty() {
   const [loaded, setLoaded] = useState(false);
@@ -29,17 +30,22 @@ export default function RickAndMorty() {
   else if (resultApi?.error) return <h2>No results...</h2>;
   else
     return (
-      <>
+      <section className="cards-field">
         {resultApi?.results.map((item) => {
           return (
             <div key={item.id}>
-              <img src={item.image} onClick={() => popUpFloat(item)} alt="Rick and Morty" />
+              <img
+                className="card-img"
+                src={item.image}
+                onClick={() => popUpFloat(item)}
+                alt="Rick and Morty"
+              />
             </div>
           );
         })}
-        <div style={{ display: popUp ? 'flex' : 'none' }}>
+        <div style={{ display: popUp ? 'block' : 'none' }}>
           <RickAndMortyPopUp content={popUpContent} setPopUp={setPopUp} />
         </div>
-      </>
+      </section>
     );
 }
