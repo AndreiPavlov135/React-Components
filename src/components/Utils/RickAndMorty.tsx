@@ -3,7 +3,7 @@ import { RickAndMortyItem, RickAndMortyRes } from './Types/RickAndMorty';
 import RickAndMortyPopUp from './RickAndMortyPopUp';
 import './Utils-styles/RickAndMorty.css';
 
-export default function RickAndMorty() {
+export default function RickAndMorty(props: { searchCharacter: string }) {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [resultApi, setResultApi] = useState<RickAndMortyRes>();
@@ -14,17 +14,16 @@ export default function RickAndMorty() {
     setPopUpContent(content);
   };
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character`)
+    fetch(`https://rickandmortyapi.com/api/character/${props.searchCharacter}`)
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data: RickAndMortyRes) => {
-        setLoaded(!loaded);
+        setLoaded(true);
         setResultApi(data);
-        console.log(data);
       })
       .catch((err) => {
         setError(err);
       });
-  }, []);
+  }, [props.searchCharacter]);
   if (error) return <h2>Error: {error.message}</h2>;
   else if (!loaded) return <h2>Progressing...</h2>;
   else if (resultApi?.error) return <h2>No results...</h2>;

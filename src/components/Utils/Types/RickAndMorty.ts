@@ -28,10 +28,14 @@ export type Location = {
 export type RickAndMortyRes = {
   results: RickAndMortyItem[];
   info: RickAndMortyInfo;
-  error?: string;
+  error: string;
 };
 
 export type RickAndMortyProps = {
   content?: RickAndMortyItem;
   setPopUp: Dispatch<SetStateAction<boolean>>;
+};
+
+export type SearchValues = {
+  name: string;
 };
