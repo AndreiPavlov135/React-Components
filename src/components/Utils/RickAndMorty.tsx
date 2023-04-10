@@ -14,10 +14,15 @@ export default function RickAndMorty(props: { searchCharacter: string }) {
     setPopUp(true);
     setPopUpContent(content);
   };
+  async function request<TResponse>(url: string): Promise<TResponse> {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data as TResponse;
+  }
+
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${props.searchCharacter}`)
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
-      .then((data: RickAndMortyRes) => {
+    request<RickAndMortyRes>(`https://rickandmortyapi.com/api/character/${props.searchCharacter}`)
+      .then((data) => {
         setLoaded(true);
         setResultApi(data);
       })

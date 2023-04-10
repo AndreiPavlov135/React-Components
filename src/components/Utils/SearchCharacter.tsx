@@ -35,6 +35,7 @@ export default function SearchCharacter(props: {
           placeholder="search name"
           {...register('name')}
           onChange={(e) => getInputValue(e)}
+          required
         />
         <button className="search-field__btn" type="submit">
           Search
