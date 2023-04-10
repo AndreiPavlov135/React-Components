@@ -48,7 +48,7 @@ export default function RickAndMorty(props: { searchCharacter: string }) {
             </div>
           );
         })}
-        <div style={{ display: popUp ? 'block' : 'none' }}>
+        <div style={{ visibility: popUp ? 'visible' : 'hidden' }}>
           <RickAndMortyPopUp content={popUpContent} setPopUp={setPopUp} />
         </div>
       </section>
