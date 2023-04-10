@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RickAndMortyItem, RickAndMortyRes } from './Types/RickAndMorty';
 import RickAndMortyPopUp from './RickAndMortyPopUp';
 import './Utils-styles/RickAndMorty.css';
+import Loader from './Loader';
 
 export default function RickAndMorty(props: { searchCharacter: string }) {
   const [loaded, setLoaded] = useState(false);
@@ -25,7 +26,7 @@ export default function RickAndMorty(props: { searchCharacter: string }) {
       });
   }, [props.searchCharacter]);
   if (error) return <h2>Error: {error.message}</h2>;
-  else if (!loaded) return <h2>Progressing...</h2>;
+  else if (!loaded) return <Loader />;
   else if (resultApi?.error) return <h2>No results...</h2>;
   else
     return (

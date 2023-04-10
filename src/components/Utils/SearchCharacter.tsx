@@ -22,16 +22,24 @@ export default function SearchCharacter(props: {
     };
   });
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        Name:
+    <div className="search-field">
+      <label className="search-field__label" htmlFor="search">
+        Search
+      </label>
+      <form className="search-field__group" onSubmit={handleSubmit(onSubmit)}>
         <input
-          {...register('name')}
+          className="search-field__input"
+          type="search"
+          id="search"
           defaultValue={localStorage.value}
+          placeholder="search name"
+          {...register('name')}
           onChange={(e) => getInputValue(e)}
         />
-      </label>
-      <input type="submit" value="search" />
-    </form>
+        <button className="search-field__btn" type="submit">
+          Search
+        </button>
+      </form>
+    </div>
   );
 }
