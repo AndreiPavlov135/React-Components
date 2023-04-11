@@ -1,0 +1,21 @@
+.form {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  position: absolute;
+  top: 27%;
+  left: 35%;
+  padding: 5%;
+  background-color: #bdbdbd;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
