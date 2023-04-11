@@ -16,6 +16,13 @@ export default function SearchCharacter(props: {
     e.preventDefault();
     setInputValue(e.target.value);
   }
+
+  const onEnterPress = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    if (e.code === 'Enter') {
+      e.preventDefault();
+      props.setSearchCharacter(`?name=${inputValue}`);
+    }
+  };
   useEffect(() => {
     return () => {
       localStorage.value = inputValue;
@@ -26,7 +33,11 @@ export default function SearchCharacter(props: {
       <label className="search-field__label" htmlFor="search">
         Search
       </label>
-      <form className="search-field__group" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="search-field__group"
+        onSubmit={handleSubmit(onSubmit)}
+        onKeyDown={(e) => onEnterPress(e)}
+      >
         <input
           className="search-field__input"
           type="search"
