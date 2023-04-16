@@ -9,7 +9,7 @@ describe('<RickAndMorty/>', () => {
   const fetchMocker = createFetchMock(vi);
   fetchMocker.enableMocks();
   test('Test on bad request', () => {
-    render(<RickAndMorty searchCharacter={'bad request'} />, {
+    render(<RickAndMorty />, {
       wrapper: BrowserRouter,
     });
     setTimeout(() => {
