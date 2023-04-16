@@ -4,9 +4,16 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 it('Click the about router link', async () => {
-  render(<App />, { wrapper: BrowserRouter });
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    { wrapper: BrowserRouter }
+  );
 
   expect(screen.getByText('About Us')).toBeInTheDocument();
 
